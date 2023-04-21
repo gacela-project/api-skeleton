@@ -9,3 +9,4 @@ var/
 
 *.cache
 composer.lock
+app-config.php

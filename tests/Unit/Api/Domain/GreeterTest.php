@@ -11,9 +11,10 @@ final class GreeterTest extends TestCase
 {
     public function test_greet(): void
     {
-        $greeter = new Greeter();
+        $greeter = new Greeter('123abc');
+
         $actual = $greeter->greet('name');
 
-        self::assertSame('Hello, name!', $actual);
+        self::assertSame("Hello, name! Your secret key is '123abc'", $actual);
     }
 }

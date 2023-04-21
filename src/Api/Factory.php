@@ -14,6 +14,8 @@ final class Factory extends AbstractFactory
 {
     public function createGreeter(): Greeter
     {
-        return new Greeter();
+        return new Greeter(
+            $this->getConfig()->getApiKey(),
+        );
     }
 }

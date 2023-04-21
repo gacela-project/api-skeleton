@@ -6,8 +6,13 @@ namespace App\Api\Domain;
 
 final class Greeter
 {
+    public function __construct(
+        private string $apiKey,
+    ) {
+    }
+
     public function greet(string $name): string
     {
-        return "Hello, {$name}!";
+        return "Hello, {$name}! Your secret key is '{$this->apiKey}'";
     }
 }
