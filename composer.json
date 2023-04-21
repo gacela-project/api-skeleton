@@ -1,0 +1,56 @@
+{
+    "name": "gacela-project/web-skeleton",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": ">=8.0.2",
+        "gacela-project/gacela": "1.*",
+        "gacela-project/router": "0.*",
+        "gacela-project/resolver": "0.*"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.16",
+        "phpunit/phpunit": "^9.6",
+        "phpstan/phpstan": "^1.10",
+        "psalm/plugin-phpunit": "^0.18",
+        "symfony/var-dumper": "^5.4",
+        "vimeo/psalm": "^5.9"
+    },
+    "config": {
+        "platform": {
+            "php": "8.0.2"
+        },
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true
+        },
+        "optimize-autoloader": true,
+        "preferred-install": "dist"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AppTest\\": "tests/"
+        }
+    },
+    "scripts": {
+        "ctal": ["@static-clear-cache", "@csfix", "@test-all"],
+        "test-all": ["@quality", "@phpunit"],
+        "quality": ["@csrun", "@psalm", "@phpstan"],
+        "phpunit": ["@test-phpunit"],
+        "static-clear-cache": [
+            "XDEBUG_MODE=off vendor/bin/psalm --clear-cache",
+            "XDEBUG_MODE=off vendor/bin/phpstan clear-result-cache"
+        ],
+        "test-phpunit": "XDEBUG_MODE=off ./vendor/bin/phpunit",
+        "test-coverage": "XDEBUG_MODE=coverage ./vendor/bin/phpunit --testsuite=unit,feature --coverage-html=data/coverage-html",
+        "psalm": "XDEBUG_MODE=off ./vendor/bin/psalm",
+        "phpstan": "XDEBUG_MODE=off ./vendor/bin/phpstan analyze",
+        "csfix": "XDEBUG_MODE=off ./vendor/bin/php-cs-fixer fix",
+        "csrun": "XDEBUG_MODE=off ./vendor/bin/php-cs-fixer fix --dry-run",
+        "serve": "php -S localhost:8080 public/index.php"
+    }
+}
