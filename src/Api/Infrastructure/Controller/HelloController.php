@@ -6,6 +6,7 @@ namespace App\Api\Infrastructure\Controller;
 
 use App\Api\Facade;
 use Gacela\Framework\DocBlockResolverAwareTrait;
+use Gacela\Router\Entities\JsonResponse;
 use Gacela\Router\Entities\Request;
 
 /**
@@ -20,17 +21,27 @@ final class HelloController
     ) {
     }
 
-    public function __invoke(string $name = ''): string
+    public function __invoke(string $name = ''): JsonResponse
     {
+        $greet = fn (string $n) => $this->getFacade()->greetName($n);
+
         if ($name !== '') {
-            return $this->getFacade()->greetName($name);
+            return $this->json($greet($name));
         }
 
         $requestName = (string)$this->request->get('name');
         if ($requestName !== '') {
-            return $this->getFacade()->greetName($requestName);
+            return $this->json($greet($requestName));
         }
 
-        return 'Hello. What is your name? HINT: use the GET param `?name=bob`';
+        return $this->json('Hello. What is your name? HINT: use the GET param `?name=bob`');
+    }
+
+    private function json(string $greeting): JsonResponse
+    {
+        return new JsonResponse(
+            ['greeting' => $greeting],
+            ['Access-Control-Allow-Origin: *'],
+        );
     }
 }

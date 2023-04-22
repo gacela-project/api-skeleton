@@ -14,9 +14,6 @@ require_once $cwd . '/vendor/autoload.php';
 
 Gacela::bootstrap($cwd, Kernel::gacelaConfigFn());
 
-header('Access-Control-Allow-Origin: *');
-header('Content-Type: application/json');
-
 Router::configure(static function (Routes $routes): void {
     # http://localhost:8080/bob
     $routes->get('{name}', HelloController::class);
