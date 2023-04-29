@@ -1,16 +1,9 @@
-includes:
-  - vendor/gacela-project/phpstan-extension/extension.neon
-
 parameters:
     level: max
     paths:
         - %currentWorkingDirectory%/src/
     checkGenericClassInNonGenericObjectType: false
     checkMissingIterableValueType: false
-
-    gacela:
-        modulesNamespace: App
-        excludedNamespaces: []
 
     ignoreErrors:
         - '#Cannot cast mixed to .*.#'

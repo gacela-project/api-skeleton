@@ -2,23 +2,21 @@
 
 declare(strict_types=1);
 
-use App\Api\Infrastructure\Controller\HelloController;
-use App\Kernel;
+use App\Api\Infrastructure\Route\ApiRoutesPlugin;
+use Gacela\Framework\Bootstrap\GacelaConfig;
 use Gacela\Framework\Gacela;
 use Gacela\Router\Router;
-use Gacela\Router\Routes;
 
 $cwd = (string)getcwd();
 
 require_once $cwd . '/vendor/autoload.php';
 
-Gacela::bootstrap($cwd, Kernel::gacelaConfigFn());
+Gacela::bootstrap($cwd, static function (GacelaConfig $config): void {
+    $config->addAppConfig('app-config.dist.php', 'app-config.php');
+    $config->setFileCache(true);
 
-Router::configure(static function (Routes $routes): void {
-    # http://localhost:8080/bob
-    $routes->get('{name}', HelloController::class);
-
-    # http://localhost:8080
-    # http://localhost:8080?name=alice
-    $routes->get('/', HelloController::class);
+    $config->addBinding(Router::class, new Router());
+    $config->addPlugin(ApiRoutesPlugin::class);
 });
+
+Gacela::get(Router::class)?->run();
