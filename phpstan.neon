@@ -1,3 +1,6 @@
+includes:
+    - vendor/gacela-project/phpstan-extension/extension.neon
+
 parameters:
     level: max
     paths:
@@ -7,3 +10,8 @@ parameters:
 
     ignoreErrors:
         - '#Cannot cast mixed to .*.#'
+
+    gacela:
+        modulesNamespace: App
+        excludedNamespaces:
+            - AppTest
