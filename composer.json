@@ -1,11 +1,11 @@
 {
-    "name": "gacela-project/web-skeleton",
+    "name": "gacela-project/api-skeleton",
     "type": "project",
     "license": "MIT",
     "require": {
         "php": ">=8.0.2",
-        "gacela-project/gacela": "^1.2",
-        "gacela-project/router": "^0.9",
+        "gacela-project/gacela": "^1.3",
+        "gacela-project/router": "^0.10",
         "gacela-project/container": "^0.4"
     },
     "require-dev": {
@@ -15,7 +15,7 @@
         "phpunit/phpunit": "^9.6",
         "psalm/plugin-phpunit": "^0.18",
         "symfony/var-dumper": "^5.4",
-        "vimeo/psalm": "^5.9"
+        "vimeo/psalm": "^5.10"
     },
     "config": {
         "platform": {

@@ -5,18 +5,17 @@ declare(strict_types=1);
 namespace App\Api\Infrastructure\Route;
 
 use App\Api\Infrastructure\Controller\HelloController;
-use Gacela\Framework\Plugin\PluginInterface;
-use Gacela\Router\Router;
-use Gacela\Router\Routes;
+use Gacela\Router\Configure\Routes;
+use Gacela\Router\RouterInterface;
 
-final class ApiRoutesPlugin implements PluginInterface
+final class ApiRoutesPlugin
 {
     public function __construct(
-        private Router $router,
+        private RouterInterface $router,
     ) {
     }
 
-    public function run(): void
+    public function __invoke(): void
     {
         $this->router->configure(static function (Routes $routes): void {
             # http://localhost:8080/bob
