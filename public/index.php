@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Api\Infrastructure\Route\ApiRoutesPlugin;
+use App\Api\Infrastructure\Plugin\ApiRoutesPlugin;
 use Gacela\Framework\Bootstrap\GacelaConfig;
 use Gacela\Framework\Gacela;
 use Gacela\Router\Config\RouterGacelaConfig;

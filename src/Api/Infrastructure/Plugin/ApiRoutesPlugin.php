@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Api\Infrastructure\Route;
+namespace App\Api\Infrastructure\Plugin;
 
 use App\Api\Infrastructure\Controller\HelloController;
 use Gacela\Router\Configure\Routes;
