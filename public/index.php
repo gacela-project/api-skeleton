@@ -14,9 +14,9 @@ require_once $cwd . '/vendor/autoload.php';
 
 Gacela::bootstrap($cwd, static function (GacelaConfig $config): void {
     $config->addAppConfig('app-config.dist.php', 'app-config.php');
-    $config->setFileCache(true);
+    $config->enableFileCache();
 
-    $config->addExtendConfig(RouterGacelaConfig::class);
+    $config->extendGacelaConfig(RouterGacelaConfig::class);
     $config->addPlugin(ApiRoutesPlugin::class);
 });
 
