@@ -10,14 +10,9 @@ use Gacela\Router\RouterInterface;
 
 final class ApiRoutesPlugin
 {
-    public function __construct(
-        private RouterInterface $router,
-    ) {
-    }
-
-    public function __invoke(): void
+    public function __invoke(RouterInterface $router): void
     {
-        $this->router->configure(static function (Routes $routes): void {
+        $router->configure(static function (Routes $routes): void {
             # http://localhost:8080/bob
             $routes->get('{name}', HelloController::class);
 
