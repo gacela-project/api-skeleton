@@ -10,14 +10,15 @@ use Gacela\Router\Router;
 
 $cwd = (string)getcwd();
 
+/** @psalm-suppress UnresolvableInclude */
 require_once $cwd . '/vendor/autoload.php';
 
 Gacela::bootstrap($cwd, static function (GacelaConfig $config): void {
-    $config->addAppConfig('app-config.dist.php', 'app-config.php');
-    $config->enableFileCache();
-
-    $config->extendGacelaConfig(RouterGacelaConfig::class);
-    $config->addPlugin(ApiRoutesPlugin::class);
+    $config
+        ->enableFileCache()
+        ->addAppConfig('app-config.dist.php', 'app-config.php')
+        ->extendGacelaConfig(RouterGacelaConfig::class)
+        ->addPlugin(ApiRoutesPlugin::class);
 });
 
 Gacela::get(Router::class)?->run();
