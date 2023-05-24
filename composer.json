@@ -9,13 +9,13 @@
         "gacela-project/container": "^0.5"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.16",
+        "friendsofphp/php-cs-fixer": "^3.17",
         "gacela-project/phpstan-extension": "^0.3",
         "phpstan/phpstan": "^1.10",
         "phpunit/phpunit": "^9.6",
         "psalm/plugin-phpunit": "^0.18",
         "symfony/var-dumper": "^5.4",
-        "vimeo/psalm": "^5.10"
+        "vimeo/psalm": "^5.12"
     },
     "config": {
         "platform": {
