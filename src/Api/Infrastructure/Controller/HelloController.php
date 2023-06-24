@@ -8,6 +8,7 @@ use App\Api\Facade;
 use Gacela\Framework\DocBlockResolverAwareTrait;
 use Gacela\Router\Entities\JsonResponse;
 use Gacela\Router\Entities\Request;
+use Gacela\Router\Entities\Response;
 
 /**
  * @method Facade getFacade()
@@ -35,6 +36,11 @@ final class HelloController
         }
 
         return $this->json('Hello. What is your name? HINT: use the GET param `?name=bob`');
+    }
+
+    public function staticAction(): Response
+    {
+        return new Response('STATIC PAGE');
     }
 
     private function json(string $greeting): JsonResponse

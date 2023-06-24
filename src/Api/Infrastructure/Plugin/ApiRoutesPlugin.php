@@ -13,12 +13,13 @@ final class ApiRoutesPlugin
     public function __invoke(RouterInterface $router): void
     {
         $router->configure(static function (Routes $routes): void {
-            # http://localhost:8080/bob
-            $routes->get('{name}', HelloController::class);
+            # http://localhost:8080/static
+            $routes->get('static', HelloController::class, 'staticAction');
 
             # http://localhost:8080
+            # http://localhost:8080/bob
             # http://localhost:8080?name=alice
-            $routes->get('/', HelloController::class);
+            $routes->get('{name?}', HelloController::class);
         });
     }
 }

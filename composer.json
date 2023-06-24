@@ -5,27 +5,17 @@
     "require": {
         "php": ">=8.0.2",
         "gacela-project/gacela": "^1.4",
-        "gacela-project/router": "^0.11",
+        "gacela-project/router": "^0.12",
         "gacela-project/container": "^0.5"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.17",
+        "friendsofphp/php-cs-fixer": "^3.19",
         "gacela-project/phpstan-extension": "^0.3",
         "phpstan/phpstan": "^1.10",
         "phpunit/phpunit": "^9.6",
         "psalm/plugin-phpunit": "^0.18",
         "symfony/var-dumper": "^5.4",
         "vimeo/psalm": "^5.12"
-    },
-    "config": {
-        "platform": {
-            "php": "8.0.2"
-        },
-        "allow-plugins": {
-            "composer/package-versions-deprecated": true
-        },
-        "optimize-autoloader": true,
-        "preferred-install": "dist"
     },
     "autoload": {
         "psr-4": {
@@ -53,5 +43,15 @@
         "csfix": "XDEBUG_MODE=off ./vendor/bin/php-cs-fixer fix",
         "csrun": "XDEBUG_MODE=off ./vendor/bin/php-cs-fixer fix --dry-run",
         "serve": "php -S localhost:8080 public/index.php"
+    },
+    "config": {
+        "platform": {
+            "php": "8.0.2"
+        },
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true
+        },
+        "optimize-autoloader": true,
+        "preferred-install": "dist"
     }
 }
