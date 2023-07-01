@@ -4,7 +4,7 @@
     "license": "MIT",
     "require": {
         "php": ">=8.0.2",
-        "gacela-project/gacela": "^1.4",
+        "gacela-project/gacela": "^1.5",
         "gacela-project/router": "^0.12",
         "gacela-project/container": "^0.5"
     },
