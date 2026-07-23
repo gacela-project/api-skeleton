@@ -1,0 +1,13 @@
+.git
+.github
+.idea
+.vscode
+tests
+vendor
+data
+var
+.gacela
+*.cache
+app-config.php
+composer.lock
+README.md

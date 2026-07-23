@@ -4,11 +4,16 @@ declare(strict_types=1);
 
 namespace App\Api;
 
-use Gacela\Framework\AbstractDependencyProvider;
+use Gacela\Framework\AbstractProvider;
 use Gacela\Framework\Container\Container;
+use Override;
 
-final class DependencyProvider extends AbstractDependencyProvider
+/**
+ * @extends AbstractProvider<Config>
+ */
+final class Provider extends AbstractProvider
 {
+    #[Override]
     public function provideModuleDependencies(Container $container): void
     {
     }

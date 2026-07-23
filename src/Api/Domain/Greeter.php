@@ -7,7 +7,7 @@ namespace App\Api\Domain;
 final class Greeter
 {
     public function __construct(
-        private string $apiKey,
+        private readonly string $apiKey,
     ) {
     }
 

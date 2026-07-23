@@ -3,19 +3,19 @@
     "type": "project",
     "license": "MIT",
     "require": {
-        "php": ">=8.0.2",
-        "gacela-project/gacela": "^1.5",
-        "gacela-project/router": "^0.12",
-        "gacela-project/container": "^0.5"
+        "php": ">=8.1",
+        "gacela-project/gacela": "^1.19",
+        "gacela-project/router": "^0.13",
+        "gacela-project/container": "^0.10"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.19",
-        "gacela-project/phpstan-extension": "^0.3",
-        "phpstan/phpstan": "^1.10",
-        "phpunit/phpunit": "^9.6",
-        "psalm/plugin-phpunit": "^0.18",
-        "symfony/var-dumper": "^5.4",
-        "vimeo/psalm": "^5.12"
+        "friendsofphp/php-cs-fixer": "^3.95",
+        "gacela-project/phpstan-extension": "^0.4",
+        "phpstan/phpstan": "^1.12",
+        "phpunit/phpunit": "^10.5",
+        "psalm/plugin-phpunit": "^0.19",
+        "symfony/var-dumper": "^6.4",
+        "vimeo/psalm": "^6.0"
     },
     "autoload": {
         "psr-4": {
@@ -42,16 +42,17 @@
         "phpstan": "XDEBUG_MODE=off ./vendor/bin/phpstan analyze",
         "csfix": "XDEBUG_MODE=off ./vendor/bin/php-cs-fixer fix",
         "csrun": "XDEBUG_MODE=off ./vendor/bin/php-cs-fixer fix --dry-run",
-        "serve": "php -S localhost:8080 public/index.php"
+        "serve": "php -S localhost:8080 public/index.php",
+        "post-create-project-cmd": [
+            "@php -r \"file_exists('app-config.php') || copy('app-config.dist.php', 'app-config.php');\""
+        ]
     },
     "config": {
         "platform": {
-            "php": "8.0.2"
-        },
-        "allow-plugins": {
-            "composer/package-versions-deprecated": true
+            "php": "8.1.31"
         },
         "optimize-autoloader": true,
-        "preferred-install": "dist"
+        "preferred-install": "dist",
+        "sort-packages": true
     }
 }

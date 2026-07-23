@@ -5,11 +5,6 @@ parameters:
     level: max
     paths:
         - %currentWorkingDirectory%/src/
-    checkGenericClassInNonGenericObjectType: false
-    checkMissingIterableValueType: false
-
-    ignoreErrors:
-        - '#Cannot cast mixed to .*.#'
 
     gacela:
         modulesNamespace: App

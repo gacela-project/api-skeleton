@@ -8,12 +8,14 @@ use Gacela\Framework\Gacela;
 use Gacela\Router\Config\RouterGacelaConfig;
 use Gacela\Router\Router;
 
-$cwd = (string)getcwd();
+// Resolve from this file, not getcwd() — the web server's working
+// directory is the docroot (public/), not the project root.
+$appRootDir = \dirname(__DIR__);
 
 /** @psalm-suppress UnresolvableInclude */
-require_once $cwd . '/vendor/autoload.php';
+require_once $appRootDir . '/vendor/autoload.php';
 
-Gacela::bootstrap($cwd, static function (GacelaConfig $config): void {
+Gacela::bootstrap($appRootDir, static function (GacelaConfig $config): void {
     $config
         ->enableFileCache()
         ->addAppConfig('app-config.dist.php', 'app-config.php')
@@ -21,4 +23,4 @@ Gacela::bootstrap($cwd, static function (GacelaConfig $config): void {
         ->addPlugin(ApiRoutesPlugin::class);
 });
 
-Gacela::get(Router::class)?->run();
+Gacela::getRequired(Router::class)->run();
