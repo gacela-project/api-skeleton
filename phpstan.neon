@@ -1,12 +1,27 @@
 includes:
-    - vendor/gacela-project/phpstan-extension/extension.neon
+    - vendor/gacela-project/gacela/phpstan-gacela.neon
 
 parameters:
     level: max
     paths:
         - %currentWorkingDirectory%/src/
 
-    gacela:
-        modulesNamespace: App
-        excludedNamespaces:
-            - AppTest
+services:
+    # The archived phpstan-extension configured this with `modulesNamespace`
+    # and `excludedNamespaces`. The framework ships the same boundary checks as
+    # rules now, so they are wired here instead: module A reaches module B only
+    # through B's Facade, both where a name is written and where a call lands
+    # on an injected dependency. `AppTest` needed excluding before because the
+    # extension analysed it; `paths` here is `src/` alone, so it cannot.
+    -
+        class: Gacela\PHPStan\Rules\CrossModuleViaFacadeRule
+        tags: [phpstan.rules.rule]
+        arguments:
+            rootNamespace: App
+            modulePathSegments: 1
+    -
+        class: Gacela\PHPStan\Rules\CrossModuleMethodCallRule
+        tags: [phpstan.rules.rule]
+        arguments:
+            rootNamespace: App
+            modulePathSegments: 1
